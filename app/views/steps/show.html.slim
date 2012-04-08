@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @step.user
+p
+  strong Date:
+  = @step.date
+p
+  strong Steps:
+  = @step.steps
+
+= link_to 'Edit', edit_step_path(@step)
+'|
+= link_to 'Back', steps_path

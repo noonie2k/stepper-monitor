@@ -1,0 +1,23 @@
+h1 Listing steps
+
+table
+  tr
+    th User
+    th Date
+    th Steps
+    th
+    th
+    th
+
+  - @steps.each do |step|
+    tr
+      td = step.user
+      td = step.date
+      td = step.steps
+      td = link_to 'Show', step
+      td = link_to 'Edit', edit_step_path(step)
+      td = link_to 'Destroy', step, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Step', new_step_path
