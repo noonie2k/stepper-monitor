@@ -13,18 +13,21 @@ javascript:
         text: 'Step Count'
       },
       xAxis: {
-        type: 'datetime'
+        type: 'datetime',
+        dateTimeLabelFormats: {
+          month: '%e. %b',
+          year: '%b'
+        }
       },
       yAxis: {
           title: {
           text: 'Steps taken'
         }
       },
-      series: [{
-        name: '#{current_user.name}',
-        data: #{current_user.steps.collect { |s| s.steps }},
-        pointStart: #{current_user.steps.minimum(:date).to_time.to_i * 1000},
-        pointInterval: #{1.day.seconds * 1000}
-      }]
+      - series.each do |s|
+        series: [{
+          name: '#{s.name}',
+          data: #{s.data}
+        }],
     });
   });
