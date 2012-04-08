@@ -2,20 +2,19 @@ h1 Steps
 table class="table table-striped"
   thead
     tr
-      th ID
-      th
-        = t("activerecord.attributes.step.user_id", :default => t("activerecord.labels.user_id", :default => "User_id"))
-      th Created at
+      th Date
+      th Steps
       th Actions
   tbody
     - @steps.each do |step|
       tr
-        td= step.id
-        td= link_to step.user_id, step_path(step)
-        td= step.created_at
+        td= step.date
+        td= step.steps
         td
           = link_to "Show", step_path(step)
           = link_to "Edit", edit_step_path(step)
           = link_to "Destroy", step_path(step), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+
+= will_paginate
 
 = link_to "New", new_step_path, :class => 'btn btn-primary'

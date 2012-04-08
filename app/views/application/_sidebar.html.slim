@@ -5,7 +5,7 @@
       li.nav-header Stats
       li
         | Average : 
-        = current_user.steps.average(:steps)
+        = current_user.steps.average(:steps).to_i
       li
         | Maximum : 
         = current_user.steps.maximum(:steps)

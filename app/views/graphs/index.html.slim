@@ -1,2 +1,30 @@
 h1 Graphs#index
 p Find me in app/views/graphs/index.html.slim
+#graph
+javascript:
+  var chart1; // globally available
+  $(document).ready(function() {
+    chart1 = new Highcharts.Chart({
+      chart: {
+        renderTo: 'graph',
+        type: 'line'
+      },
+      title: {
+        text: 'Step Count'
+      },
+      xAxis: {
+        type: 'datetime'
+      },
+      yAxis: {
+          title: {
+          text: 'Steps taken'
+        }
+      },
+      series: [{
+        name: '#{current_user.name}',
+        data: #{current_user.steps.collect { |s| s.steps }},
+        pointStart: #{current_user.steps.minimum(:date).to_time.to_i * 1000},
+        pointInterval: #{1.day.seconds * 1000}
+      }]
+    });
+  });

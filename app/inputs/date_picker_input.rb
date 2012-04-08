@@ -1,9 +1,5 @@
-module SimpleForm
-  module Inputs
-    class DatePickerInput < Base
-      def input
-        @builder.text_field(attribute_name, class: 'date_picker' )
-      end
-    end
+class DatePickerInput < SimpleForm::Inputs::Base
+  def input
+    @builder.text_field(attribute_name, class: 'date_picker', autocomplete: :off )
   end
 end

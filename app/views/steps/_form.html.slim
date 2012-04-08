@@ -2,7 +2,6 @@
   .clearfix
     = f.label :date, t("activerecord.attributes./step.date", :default => "Date"), :class => :label
     .input
-      = f.input :date
       = f.input :date, as: :date_picker
   .clearfix
     = f.label :steps, t("activerecord.attributes./step.steps", :default => "Steps"), :class => :label

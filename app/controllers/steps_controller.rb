@@ -4,7 +4,7 @@ class StepsController < ApplicationController
   # GET /steps
   # GET /steps.json
   def index
-    @steps = Step.all
+    @steps = Step.paginate(page: params[:page], per_page: 15)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +43,8 @@ class StepsController < ApplicationController
   # POST /steps.json
   def create
     @step = current_user.steps.new(params[:step])
+
+    p @step.date
 
     respond_to do |format|
       if @step.save
