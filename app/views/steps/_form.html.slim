@@ -1,10 +1,14 @@
-= simple_form_for(@step) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.association :user
-    = f.input :date
-    = f.input :steps
+= simple_form_for @step do |f|
+  .clearfix
+    = f.label :date, t("activerecord.attributes./step.date", :default => "Date"), :class => :label
+    .input
+      = f.input :date
+  .clearfix
+    = f.label :steps, t("activerecord.attributes./step.steps", :default => "Steps"), :class => :label
+    .input
+      = f.input :steps
 
   .form-actions
-    = f.button :submit
+    button class="btn primary" type="submit" Save
+    |  or 
+    = link_to "Cancel", steps_path

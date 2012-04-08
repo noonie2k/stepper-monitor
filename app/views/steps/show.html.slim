@@ -1,15 +1,11 @@
-p#notice = notice
+label class="label"= t("activerecord.attributes.step.user_id", :default => t("activerecord.labels.user_id", :default => "User")) + ":"
+p= @step.user_id
+label class="label"= t("activerecord.attributes.step.date", :default => t("activerecord.labels.date", :default => "Date")) + ":"
+p= @step.date
+label class="label"= t("activerecord.attributes.step.steps", :default => t("activerecord.labels.steps", :default => "Steps")) + ":"
+p= @step.steps
 
-p
-  strong User:
-  = @step.user
-p
-  strong Date:
-  = @step.date
-p
-  strong Steps:
-  = @step.steps
-
-= link_to 'Edit', edit_step_path(@step)
-'|
-= link_to 'Back', steps_path
+.form-actions
+  = link_to "Back", steps_path, :class => 'btn'
+  = link_to "Edit", edit_step_path(@step), :class => 'btn'
+  = link_to "Delete", step_path(@step), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

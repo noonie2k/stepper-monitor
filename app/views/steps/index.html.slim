@@ -1,23 +1,21 @@
-h1 Listing steps
-
-table
-  tr
-    th User
-    th Date
-    th Steps
-    th
-    th
-    th
-
-  - @steps.each do |step|
+h1 Steps
+table class="table table-striped"
+  thead
     tr
-      td = step.user
-      td = step.date
-      td = step.steps
-      td = link_to 'Show', step
-      td = link_to 'Edit', edit_step_path(step)
-      td = link_to 'Destroy', step, :confirm => 'Are you sure?', :method => :delete
+      th ID
+      th
+        = t("activerecord.attributes.step.user_id", :default => t("activerecord.labels.user_id", :default => "User_id"))
+      th Created at
+      th Actions
+  tbody
+    - @steps.each do |step|
+      tr
+        td= step.id
+        td= link_to step.user_id, step_path(step)
+        td= step.created_at
+        td
+          = link_to "Show", step_path(step)
+          = link_to "Edit", edit_step_path(step)
+          = link_to "Destroy", step_path(step), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-br
-
-= link_to 'New Step', new_step_path
+= link_to "New", new_step_path, :class => 'btn btn-primary'

@@ -1,8 +1,10 @@
-= simple_form_for(@user) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
+= simple_form_for @user do |f|
+  .clearfix
+    = f.label :name, t("activerecord.attributes./user.name", :default => "Name"), :class => :label
+    .input
+      = f.input :name, label: false
 
   .form-actions
-    = f.button :submit
+    button class="btn primary" type="submit" Save
+    |  or 
+    = link_to "Cancel", users_path

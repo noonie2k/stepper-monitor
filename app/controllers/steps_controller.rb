@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+  before_filter :user_selected
+
   # GET /steps
   # GET /steps.json
   def index
@@ -24,7 +26,7 @@ class StepsController < ApplicationController
   # GET /steps/new
   # GET /steps/new.json
   def new
-    @step = Step.new
+    @step = current_user.steps.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,7 @@ class StepsController < ApplicationController
   # POST /steps
   # POST /steps.json
   def create
-    @step = Step.new(params[:step])
+    @step = current_user.steps.new(params[:step])
 
     respond_to do |format|
       if @step.save

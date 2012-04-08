@@ -40,7 +40,7 @@ html lang='en'
                   b.caret
                 ul.dropdown-menu
                   - User.all.each do |user|
-                    li= link_to user.name, login_path(user.id)
+                    li= link_to user.name, login_path(user_id: user.id), method: :post
                   li.divider
                   li= link_to 'Manage Users', users_path
 
@@ -49,15 +49,13 @@ html lang='en'
       .content
         .row
           .span9
+            - if alert
+              .alert.alert-error= alert
+            - if notice
+              .alert.alert-info= notice
             = yield
           .span3
-            .well.sidebar-nav
-              h3 Sidebar
-              ul.nav.nav-list
-                li.nav-header Sidebar
-                li= link_to 'Link 1', '/path1'
-                li= link_to 'Link 2', '/path2'
-                li= link_to 'Link 3', '/path3'
+            = render 'sidebar'
     
       footer
         p &copy; Company 2012

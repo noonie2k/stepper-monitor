@@ -1,9 +1,7 @@
-p#notice = notice
+label class="label"= t("activerecord.attributes.user.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+p= @user.name
 
-p
-  strong Name:
-  = @user.name
-
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+.form-actions
+  = link_to "Back", users_path, :class => 'btn'
+  = link_to "Edit", edit_user_path(@user), :class => 'btn'
+  = link_to "Delete", user_path(@user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'
