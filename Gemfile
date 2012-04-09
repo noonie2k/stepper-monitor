@@ -22,7 +22,11 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'minitest'
   gem 'factory_girl_rails'
+  gem 'mocha'
+  gem 'simplecov'
+  gem 'turn'
 end
 
 gem 'jquery-rails'

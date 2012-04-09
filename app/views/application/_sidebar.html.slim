@@ -17,4 +17,4 @@
     h3 Select a user
     ul.nav.nav-pills.nav-stacked
       - User.all.each do |user|
-        li= link_to user.name, login_path(user_id: user.id), method: :post
+        li= link_to user.name, login_path(user_id: user.id)

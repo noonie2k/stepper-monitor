@@ -1,19 +1,21 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+  test "should set user_id in session" do
+    user = FactoryGirl.create(:user)
+
+    assert_difference('session[:user_id]') do
+      get :create, { user_id: user.id }
+    end
+    assert_redirected_to root_path
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
-  end
+  test "should remove user_id from session" do
+    user = FactoryGirl.create(:user)
 
-  test "should get destroy" do
     get :destroy
-    assert_response :success
+    assert_equal(nil, session[:user_id])
+    assert_redirected_to root_path
   end
 
 end

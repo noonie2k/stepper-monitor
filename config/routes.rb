@@ -5,12 +5,12 @@ StepperMonitor::Application.routes.draw do
   resources :users
 
   controller :sessions do
-    get  'login'  => :new
-    post 'login'  => :create
-    get  'logout' => :destroy
+    get 'login'  => :create
+    get 'logout' => :destroy
   end
 
   controller :graphs do
     get 'graphs' => :index
+    get 'graphs/:start/:end' => :index
   end
 end
